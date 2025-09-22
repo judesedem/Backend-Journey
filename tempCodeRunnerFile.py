@@ -1,12 +1,14 @@
 # Question 6
-# # Write a function second_largest(lst) that finds the second largest number in a list without using sorted().
-
+# # Write a function second_largest(lst) that finds the second largest number in a list without using sorted()
 def is_second_largest(n):
     for passes in range(len(n)-1):
         for i in range(len(n)-1-passes):
             if n[i] < n[i+1]:
                 n[i+1], n[i] = n[i], n[i+1]
     return n[1]
+
+
+
 
 # try:
 #     n = []
