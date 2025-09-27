@@ -1,4 +1,4 @@
-Question 6
+# Question 6
 # Write a function second_largest(lst) that finds the second largest number in a list without using sorted().
 
 def is_second_largest(n):
@@ -137,3 +137,57 @@ def get_user_city(user):
 def get_user_details(username,email,theme):
     return {"username": username,"email":email,"theme":theme}
 
+
+#Question 5
+# Write a function merge_lists(*lists) that accepts multiple lists and merges them into a single unique list (no duplicates).
+def merge_lists():
+    user_list=[] 
+    while True:              
+        user_response=input("Enter numbers separated by commas(press enter to stop): ")
+        if user_response=="":
+            break
+        #what now??!!, I'm suppossed to separate them,
+        numbers=[x.strip() for x in user_response.split(",")]
+        user_list.extend(numbers)#appending doesn't seem to work here
+
+    merged=list(set(user_list))
+    return merged
+print(f"Merged list: {merge_lists()}")
+ 
+#Question 8
+#Write a function group_by_category(items) that groups a list of dictionaries by a category key.
+def group_by_category(items):
+    #arrays are different from dictionaries
+    grouped={}
+    for item in items:
+        category=item.get("category")
+        if category not in grouped:#kinda like the grocery question
+            grouped[category]=[]
+        grouped[category].append(item)
+    return grouped
+
+
+#Question 10
+#Write an async function fetch_posts() that fetches posts from https://jsonplaceholder.typicode.com/posts 
+# using aiohttp or httpx and prints the titles of the first 5 posts.
+#wtf is this??!!,beyond my current capabilities
+import aiohttp
+import asyncio
+
+async def fetch_posts():
+    url = "https://jsonplaceholder.typicode.com/posts"
+    async with aiohttp.ClientSession() as session:
+        async with session.get(url) as response:
+            posts = await response.json()
+            for post in posts[:5]:
+                print(post["title"])
+
+
+if __name__ == "__main__":
+    asyncio.run(fetch_posts())
+
+
+
+
+
+        
