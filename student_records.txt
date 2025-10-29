@@ -1,0 +1,8 @@
+student_records=[("Alice",16,(88,92,79)),
+("Bob",17,(95,85,90)),
+("Charlie",16,(70,75,80))
+("David",17,(95,90,92))
+("Eve",16,(60,65,70))
+]
+2hr7m 4s
+understand what goes on when you type git diff --staged
