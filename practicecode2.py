@@ -1177,17 +1177,59 @@ coordinates = [(1, 5), (2, 3), (4, 8), (0, 2)]
 #     student2 = Student.from_json(student1.to_json())
 #     print(student2)
 
+# import json
+
+
+# data = '''
+# [
+#     {"name": "Alice", "score": 85},
+#     {"name": "Bob", "score": 58},
+#     {"name": "Charlie", "score": 92},
+#     {"name": "Diana", "score": 74}
+# ]
+# '''
+# students=json.loads(data)
+# passing_students=list(filter(lambda x:x['score']>70,students))
+# print(passing_students)
 import json
+class Payment:
+    def __init__(self,payment_id,customer_name,amount,payment_method,date,status):
+        self.payment_id=payment_id
+        self.customer_name=customer_name
+        self.amount=amount
+        self.payment_method=payment_method
+        self.date=date
+        self.status=status
+
+    def make_payment(self):
+        self.status='Paid'
+        return f"Payment received!!"
+    
+    def refund(self):
+        self.status='refunded'
+        return f"Payment refunded for {self.customer_name}"
+    
+    def to_json(self):
+        payment_details={
+            "Payment ID":self.payment_id,
+            "Customer":self.customer_name,
+            "Amount":self.amount,
+            "Payment method":self.payment_method,
+            "Date":self.date,
+            "Status":self.status
+        }
+        return json.dumps(payment_details,indent=4)
+    @classmethod
+    def from_json(cls,json_string):
+        data=json.loads(json_string)
+        instance = cls(data["customer_name"], data["payment_id"], data["amount"],data["payment_method"],data["date"],data["status"])
+        return instance
+    
+if __name__ == "__main__":        
+    customer1 = Payment("YRyu", "John", 90,"cash","02/04/2020","Paid")
+    print(customer1.to_json())
 
 
-data = '''
-[
-    {"name": "Alice", "score": 85},
-    {"name": "Bob", "score": 58},
-    {"name": "Charlie", "score": 92},
-    {"name": "Diana", "score": 74}
-]
-'''
-students=json.loads(data)
-passing_students=list(filter(lambda x:x['score']>70,students))
-print(passing_students)
+
+    
+        
