@@ -18,7 +18,7 @@
 
 # class Lion(Animal):
 #     def sound(self):
-#         return "Roar"
+#         retrn "Roar"
     
 # class Elephant(Animal):
 #     def sound(self):
@@ -1301,5 +1301,37 @@ print(booking1.get_booking_details())
 # print(booking1.confirm_booking())
 # print(booking1.get_booking_details())
 
+import json
+class Student:
+    def __init__(self,name,age,grades):
+        self._name=name
+        self._age=age if age>=0 else 0
+        self._grades=grades
     
-        
+    def get_name(self):
+        return self._name
+    
+    def get_age(self):
+        return self._age
+    
+    def get_grades(self):
+        return self._grades
+    
+    def add_grade(self,grade):
+        self._grades.append(grade)
+
+    def save_to_file(self,filename):
+        data={
+            "name":self._name,
+            "age":self._age,
+            "grades":self._grades
+        }
+        with open(filename,"w") as file:
+            json.dump(data, file, indent=4)
+    @classmethod
+    def load_from_file(cls,filename):       
+        with open(filename,"r") as file:
+            data=json.load(file)
+        return cls(data["name"], data["age"], data["grades"])
+    
+    
