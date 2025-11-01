@@ -1191,45 +1191,115 @@ coordinates = [(1, 5), (2, 3), (4, 8), (0, 2)]
 # students=json.loads(data)
 # passing_students=list(filter(lambda x:x['score']>70,students))
 # print(passing_students)
-import json
-class Payment:
-    def __init__(self,payment_id,customer_name,amount,payment_method,date,status):
-        self.payment_id=payment_id
+# import json
+# class Payment:
+#     def __init__(self,payment_id,customer_name,amount,payment_method,date,status):
+#         self.payment_id=payment_id
+#         self.customer_name=customer_name
+#         self.amount=amount
+#         self.payment_method=payment_method
+#         self.date=date
+#         self.status=status
+
+#     def make_payment(self):
+#         self.status='Paid'
+#         return f"Payment received!!"
+    
+#     def refund(self):
+#         self.status='refunded'
+#         return f"Payment refunded for {self.customer_name}"
+    
+#     def to_json(self):
+#         payment_details={
+#             "Payment ID":self.payment_id,
+#             "Customer":self.customer_name,
+#             "Amount":self.amount,
+#             "Payment method":self.payment_method,
+#             "Date":self.date,
+#             "Status":self.status
+#         }
+#         return json.dumps(payment_details,indent=4)
+#     @classmethod
+#     def from_json(cls,json_string):
+#         data=json.loads(json_string)
+#         instance = cls(data["customer_name"], data["payment_id"], data["amount"],data["payment_method"],data["date"],data["status"])
+#         return instance
+    
+# if __name__ == "__main__":        
+#     customer1 = Payment("YRyu", "John", 90,"cash","02/04/2020","Paid")
+#     print(customer1.to_json())
+
+from datetime import datetime
+class Booking:
+    def __init__(self,booking_id,customer_name,bus_name,seat_number,fare):
+        self.booking_id=booking_id
         self.customer_name=customer_name
-        self.amount=amount
-        self.payment_method=payment_method
-        self.date=date
-        self.status=status
+        self.bus_name=bus_name
+        self.seat_number=seat_number
+        self.fare=fare
+        self.date=datetime.now()
+        self.status="Pending"
+        
 
-    def make_payment(self):
-        self.status='Paid'
-        return f"Payment received!!"
+    def confirm_booking(self):
+        self.status="Confirmed"
+        return "You ride has been confirmed"
     
-    def refund(self):
-        self.status='refunded'
-        return f"Payment refunded for {self.customer_name}"
+    def cancel_booking(self):
+        self.status="Cancelled"
+        return "You ride has been cancelled"
     
-    def to_json(self):
-        payment_details={
-            "Payment ID":self.payment_id,
-            "Customer":self.customer_name,
-            "Amount":self.amount,
-            "Payment method":self.payment_method,
-            "Date":self.date,
-            "Status":self.status
+    def get_booking_details(self):
+        return {
+            "Booking_id":self.booking_id,
+            "Customer_name":self.customer_name,
+            "Bus_name":self.bus_name,
+            "Seat_number":self.seat_number,
+            "Fare":self.fare,
+            "Status":self.status,
+            "Date":self.date.strftime("%d/%m/%Y %H:%M:%S")
         }
-        return json.dumps(payment_details,indent=4)
-    @classmethod
-    def from_json(cls,json_string):
-        data=json.loads(json_string)
-        instance = cls(data["customer_name"], data["payment_id"], data["amount"],data["payment_method"],data["date"],data["status"])
-        return instance
+
+booking1=Booking("J839","Jude Fiadzawoo","Ayeduase",12,67.00)
+print(booking1.confirm_booking())
+print(booking1.get_booking_details())
+
+# from datetime import datetime
+
+# class Booking:
+#     def __init__(self, booking_id, customer_name, bus_name, seat_number, fare):
+#         self.booking_id = booking_id
+#         self.customer_name = customer_name
+#         self.bus_name = bus_name
+#         self.seat_number = seat_number
+#         self.fare = fare
+#         self.date = datetime.now()  # automatically set
+#         self.status = "Pending"     # automatically set
+
+#     def confirm_booking(self):
+#         self.status = "Confirmed"
+#         return "Your ride has been confirmed"
     
-if __name__ == "__main__":        
-    customer1 = Payment("YRyu", "John", 90,"cash","02/04/2020","Paid")
-    print(customer1.to_json())
+#     def cancel_booking(self):
+#         self.status = "Cancelled"
+#         return "Your ride has been cancelled"
+    
+#     def get_booking_details(self):
+#         return {
+#             "Booking_id": self.booking_id,
+#             "Customer_name": self.customer_name,
+#             "Bus_name": self.bus_name,
+#             "Seat_number": self.seat_number,
+#             "Fare": self.fare,
+#             "Status": self.status,
+#             "Date": self.date.strftime("%d/%m/%Y %H:%M:%S")
+#         }
 
+# # Create booking
+# booking1 = Booking("J839", "Jude Fiadzawoo", "Ayeduase", 12, 67.00)
 
+# print(booking1.confirm_booking())
+# print(booking1.get_booking_details())
 
     
         
