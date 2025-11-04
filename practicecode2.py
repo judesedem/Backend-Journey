@@ -1229,109 +1229,191 @@ coordinates = [(1, 5), (2, 3), (4, 8), (0, 2)]
 #     customer1 = Payment("YRyu", "John", 90,"cash","02/04/2020","Paid")
 #     print(customer1.to_json())
 
-from datetime import datetime
-class Booking:
-    def __init__(self,booking_id,customer_name,bus_name,seat_number,fare):
-        self.booking_id=booking_id
-        self.customer_name=customer_name
-        self.bus_name=bus_name
-        self.seat_number=seat_number
-        self.fare=fare
-        self.date=datetime.now()
-        self.status="Pending"
+# from datetime import datetime
+# class Booking:
+#     def __init__(self,booking_id,customer_name,bus_name,seat_number,fare):
+#         self.booking_id=booking_id
+#         self.customer_name=customer_name
+#         self.bus_name=bus_name
+#         self.seat_number=seat_number
+#         self.fare=fare
+#         self.date=datetime.now()
+#         self.status="Pending"
         
 
-    def confirm_booking(self):
-        self.status="Confirmed"
-        return "You ride has been confirmed"
-    
-    def cancel_booking(self):
-        self.status="Cancelled"
-        return "You ride has been cancelled"
-    
-    def get_booking_details(self):
-        return {
-            "Booking_id":self.booking_id,
-            "Customer_name":self.customer_name,
-            "Bus_name":self.bus_name,
-            "Seat_number":self.seat_number,
-            "Fare":self.fare,
-            "Status":self.status,
-            "Date":self.date.strftime("%d/%m/%Y %H:%M:%S")
-        }
-
-booking1=Booking("J839","Jude Fiadzawoo","Ayeduase",12,67.00)
-print(booking1.confirm_booking())
-print(booking1.get_booking_details())
-
-# from datetime import datetime
-
-# class Booking:
-#     def __init__(self, booking_id, customer_name, bus_name, seat_number, fare):
-#         self.booking_id = booking_id
-#         self.customer_name = customer_name
-#         self.bus_name = bus_name
-#         self.seat_number = seat_number
-#         self.fare = fare
-#         self.date = datetime.now()  # automatically set
-#         self.status = "Pending"     # automatically set
-
 #     def confirm_booking(self):
-#         self.status = "Confirmed"
-#         return "Your ride has been confirmed"
+#         self.status="Confirmed"
+#         return "You ride has been confirmed"
     
 #     def cancel_booking(self):
-#         self.status = "Cancelled"
-#         return "Your ride has been cancelled"
+#         self.status="Cancelled"
+#         return "You ride has been cancelled"
     
 #     def get_booking_details(self):
 #         return {
-#             "Booking_id": self.booking_id,
-#             "Customer_name": self.customer_name,
-#             "Bus_name": self.bus_name,
-#             "Seat_number": self.seat_number,
-#             "Fare": self.fare,
-#             "Status": self.status,
-#             "Date": self.date.strftime("%d/%m/%Y %H:%M:%S")
+#             "Booking_id":self.booking_id,
+#             "Customer_name":self.customer_name,
+#             "Bus_name":self.bus_name,
+#             "Seat_number":self.seat_number,
+#             "Fare":self.fare,
+#             "Status":self.status,
+#             "Date":self.date.strftime("%d/%m/%Y %H:%M:%S")
 #         }
 
-# # Create booking
-# booking1 = Booking("J839", "Jude Fiadzawoo", "Ayeduase", 12, 67.00)
-
+# booking1=Booking("J839","Jude Fiadzawoo","Ayeduase",12,67.00)
 # print(booking1.confirm_booking())
 # print(booking1.get_booking_details())
 
-import json
-class Student:
-    def __init__(self,name,age,grades):
-        self._name=name
-        self._age=age if age>=0 else 0
-        self._grades=grades
-    
-    def get_name(self):
-        return self._name
-    
-    def get_age(self):
-        return self._age
-    
-    def get_grades(self):
-        return self._grades
-    
-    def add_grade(self,grade):
-        self._grades.append(grade)
+# # from datetime import datetime
 
-    def save_to_file(self,filename):
-        data={
-            "name":self._name,
-            "age":self._age,
-            "grades":self._grades
-        }
-        with open(filename,"w") as file:
-            json.dump(data, file, indent=4)
-    @classmethod
-    def load_from_file(cls,filename):       
-        with open(filename,"r") as file:
-            data=json.load(file)
-        return cls(data["name"], data["age"], data["grades"])
+# # class Booking:
+# #     def __init__(self, booking_id, customer_name, bus_name, seat_number, fare):
+# #         self.booking_id = booking_id
+# #         self.customer_name = customer_name
+# #         self.bus_name = bus_name
+# #         self.seat_number = seat_number
+# #         self.fare = fare
+# #         self.date = datetime.now()  # automatically set
+# #         self.status = "Pending"     # automatically set
+
+# #     def confirm_booking(self):
+# #         self.status = "Confirmed"
+# #         return "Your ride has been confirmed"
     
+# #     def cancel_booking(self):
+# #         self.status = "Cancelled"
+# #         return "Your ride has been cancelled"
     
+# #     def get_booking_details(self):
+# #         return {
+# #             "Booking_id": self.booking_id,
+# #             "Customer_name": self.customer_name,
+# #             "Bus_name": self.bus_name,
+# #             "Seat_number": self.seat_number,
+# #             "Fare": self.fare,
+# #             "Status": self.status,
+# #             "Date": self.date.strftime("%d/%m/%Y %H:%M:%S")
+# #         }
+
+# # # Create booking
+# # booking1 = Booking("J839", "Jude Fiadzawoo", "Ayeduase", 12, 67.00)
+
+# # print(booking1.confirm_booking())
+# # print(booking1.get_booking_details())
+
+# import json
+# class Student:
+#     def __init__(self,name,age,grades):
+#         self._name=name
+#         self._age=age if age>=0 else 0
+#         self._grades=grades
+    
+#     def get_name(self):
+#         return self._name
+    
+#     def get_age(self):
+#         return self._age
+    
+#     def get_grades(self):
+#         return self._grades
+    
+#     def add_grade(self,grade):
+#         self._grades.append(grade)
+
+#     def save_to_file(self,filename):
+#         data={
+#             "name":self._name,
+#             "age":self._age,
+#             "grades":self._grades
+#         }
+#         with open(filename,"w") as file:
+#             json.dump(data, file, indent=4)
+#     @classmethod
+#     def load_from_file(cls,filename):       
+#         with open(filename,"r") as file:
+#             data=json.load(file)
+#         return cls(data["name"], data["age"], data["grades"])
+    
+# import json
+
+
+
+# with open("date.txt","r") as file:
+#     data=json.load(file)
+
+# print(data)
+# import json
+
+# with open("data.json", "r") as f:
+#     info = json.load(f)
+
+# print(info["versions"][1])
+
+
+
+# import json
+
+# data={"creator":"Guido van Rossum"}
+
+# with open("info.json","r") as file:
+#     data_file=json.load(file)
+
+# data_file.update(data)
+
+# with open("info.json","w") as file:
+#     json.dump(data_file,file, indent=4)
+
+# with open("info.json","r") as file:
+#     info=json.load(file)
+
+# more_data={"version": 3.12}
+
+# with open("info.json","r") as file:
+#     data_file1=json.load(file)
+
+# data_file1.update(more_data)
+ 
+# with open("info.json", "w") as file:
+#     json.dump(data_file1,file,indent=4)
+
+# print(data_file1)
+
+# bus_history=[
+#     {"plate_number": "KST-1111", "route": "A", "status": "Active"},
+#     {"plate_number": "KST-2222", "route": "B", "status": "Active"}
+# ]
+# with open ("buses.json","w") as file:
+#     json.dump(bus_history,file,indent=4)
+
+# with open("buses.json","r") as file:
+#     history=json.load(file)
+
+# new_info={"plate_number": "KST-3333", "route": "C", "status": "Active"}
+
+# history.append(new_info)
+
+# history=[buses for buses in history if buses["plate_number"]!="KST-3333"]
+
+# for buses in history:
+#     if buses["plate_number"]=="KST-2222":
+#         buses["status"]="Delayed"
+
+# with open("buses.json","w") as file:
+#     json.dump(history,file, indent=4)
+
+
+# print(history)
+
+add=lambda x,y:x+y
+print(add(5,8))
+
+buses = [
+    {"plate_number": "KST-1111", "route": "A"},
+    {"plate_number": "KST-2222", "route": "B"},
+    {"plate_number": "KST-3333", "route": "A"}
+]
+# fnk=list(filter(lambda x: x["route"]!="B",buses))
+# print(fnk)
+fnk1=sorted(buses, key=lambda x: x["plate_number"], reverse=False)
+print(fnk1)
+
