@@ -1416,4 +1416,5 @@ buses = [
 # print(fnk)
 fnk1=sorted(buses, key=lambda x: x["plate_number"], reverse=False)
 print(fnk1)
+#Lost a lot of code today
 
