@@ -1404,17 +1404,86 @@ coordinates = [(1, 5), (2, 3), (4, 8), (0, 2)]
 
 # print(history)
 
-add=lambda x,y:x+y
-print(add(5,8))
+# add=lambda x,y:x+y
+# print(add(5,8))
 
-buses = [
-    {"plate_number": "KST-1111", "route": "A"},
-    {"plate_number": "KST-2222", "route": "B"},
-    {"plate_number": "KST-3333", "route": "A"}
-]
-# fnk=list(filter(lambda x: x["route"]!="B",buses))
-# print(fnk)
-fnk1=sorted(buses, key=lambda x: x["plate_number"], reverse=False)
-print(fnk1)
-#Lost a lot of code today
+# buses = [
+#     {"plate_number": "KST-1111", "route": "A"},
+#     {"plate_number": "KST-2222", "route": "B"},
+#     {"plate_number": "KST-3333", "route": "A"}
+# ]
+# # fnk=list(filter(lambda x: x["route"]!="B",buses))
+# # print(fnk)
+# fnk1=sorted(buses, key=lambda x: x["plate_number"], reverse=False)
+# print(fnk1)
+# #Lost a lot of code today
 
+# def sum_all(*args):
+#     total=0
+#     for num in args:
+#         print(f"Adding,{num}")
+#         total+=num
+#     return total
+# print(sum_all(2,3,4))
+
+# def sum_all(*args):
+#     total=sum(args)
+#     return total
+# print(sum_all(2,3,4))
+
+# def show_info(**kwargs):
+#     for key, value in kwargs.items():
+#         print(f"{key}: {value}")
+    
+# show_info(name="Jude", age=22)
+
+# def introduce(*args, **kwargs):
+#     if args:
+#         print("Hobbies:", ", ".join(args))
+#     for key, value in kwargs.items():
+#         print(f"{key}:{value}")
+# introduce("reading","coding", name="Jude",age=22)
+
+
+# def introduce(*args):
+#     for names in args:
+#         print(f"Name:{names}")
+ 
+
+# def sum_all(*args):
+#     total=sum(args)
+#     return total
+# sum_all(1, 2, 3, 4)  
+
+# def count_items(*args):
+#     total=0
+#     for items in args:
+#         total+=1
+#     return total
+# print(count_items("apple", "banana", "cherry"))
+
+
+# def print_args(*args):
+#     for letters in args:
+#         print(letters)
+        
+# print(print_args("Python", "is", "fun"))
+# Output:
+# Python
+# is
+# fun
+
+# def multiply_all(*args):
+#     total=0
+#     for numbers in args:
+#         total*=numbers
+#     return total
+# print(multiply_all(2, 3, 4))
+
+from functools import reduce
+import operator
+
+def multiply_all(*args):
+    total=reduce(operator.mul,args)
+    return total
+print(multiply_all(2,3,4))
