@@ -1536,50 +1536,101 @@ coordinates = [(1, 5), (2, 3), (4, 8), (0, 2)]
 # print(Badu.calculate_interest())
 
 
-import json
-class Student:
-    def __init__(self,name,age,grades):
-        self.name=name
-        self.age=age
-        self.grades=grades
+# import json
+# class Student:
+#     def __init__(self,name,age,grades):
+#         self.name=name
+#         self.age=age
+#         self.grades=grades
 
-    def average_score(self):
-        return sum(self.grades)/len(self.grades)
+#     def average_score(self):
+#         return sum(self.grades)/len(self.grades)
         
-class StudentManager:
-    def __init__(self,filename="students.json"):
-        self.filename=filename
+# class StudentManager:
+#     def __init__(self,filename="students.json"):
+#         self.filename=filename
     
-    def add_student(self,student):
-        data=self.load_students()
-        data.append({
-            "name":student.name,
-            "age":student.age,
-            "grades":student.grades
-        })
-        with open(self.filename,"w") as file:
-            json.dump(data,file, indent=4)
+#     def add_student(self,student):
+#         data=self.load_students()
+#         data.append({
+#             "name":student.name,
+#             "age":student.age,
+#             "grades":student.grades
+#         })
+#         with open(self.filename,"w") as file:
+#             json.dump(data,file, indent=4)
     
-    def load_students(self):
-       try:
-           with open("self.filename","r") as file:
-            json.load(file)
+#     def load_students(self):
+#        try:
+#            with open("self.filename","r") as file:
+#             json.load(file)
 
-       except (FileNotFoundError,json.JSONDecodeError):
-           return[]
+#        except (FileNotFoundError,json.JSONDecodeError):
+#            return[]
        
-    def show_all(self):
-        for s in self.load_students():
-            avg=sum(s["grades"])/len(s["grades"])
-            print(f"{s['name']} ({s['age']}) = Avg:{avg:.2f}")
+#     def show_all(self):
+#         for s in self.load_students():
+#             avg=sum(s["grades"])/len(s["grades"])
+#             print(f"{s['name']} ({s['age']}) = Avg:{avg:.2f}")
     
-manager=StudentManager()
+# manager=StudentManager()
 
-student1=Student("John",23,[83,23,67,87])
-student2=Student("Todd",22,[23,76,98])
+# student1=Student("John",23,[83,23,67,87])
+# student2=Student("Todd",22,[23,76,98])
 
-manager.add_student(student1)
-manager.add_student(student2)
+# manager.add_student(student1)
+# manager.add_student(student2)
 
-print(manager.show_all())   
+# print(manager.show_all())
+
+
             
+import json
+class Product:
+    def __init__(self,name,price):
+        self._name=name
+        self._price=price
+
+class Book(Product):
+    def price_discount(self):
+        discount_rate=0.1
+        return f"Discounted price={self._price-(self._price*discount_rate)}"
+
+class Electronic(Product):
+    def price_discount(self):
+        if self._price>100:
+            discount_rate=0.2
+        else:
+            discount_rate=0.05
+        return f"Discounted price={self._price-(self._price*discount_rate)}"
+
+#how do I convert them to objects what's the syntax for that 
+class ProductManager:
+    def __init__(self,filename="products.json"):
+        self.filename=filename
+    def read_products(self):
+        with open(self.filename,"r") as file:
+            data=json.load(file)
+        
+        products=[]
+
+        for item in data:
+            if item["type"]=="Book":
+                products.append(Book(item["name"], item["price"]))
+            elif item["type"] == "Electronic":
+                products.append(Electronic(item["name"], item["price"]))
+        
+        return products
+    
+manager=ProductManager()
+products=manager.read_products()
+
+for p in products:
+    print(p.price_discount())
+        
+    
+    
+
+
+
+
