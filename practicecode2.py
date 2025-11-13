@@ -778,6 +778,7 @@
 # even_num=lambda x:x[0]%2==0
 # even_num = lambda x: len(x) > 0 and isinstance(x[0], int) and x[0] % 2 == 0
 
+from inspect import isabstract
 import json
 
 
@@ -1480,10 +1481,105 @@ coordinates = [(1, 5), (2, 3), (4, 8), (0, 2)]
 #     return total
 # print(multiply_all(2, 3, 4))
 
-from functools import reduce
-import operator
+# from functools import reduce
+# import operator
 
-def multiply_all(*args):
-    total=reduce(operator.mul,args)
-    return total
-print(multiply_all(2,3,4))
+# def multiply_all(*args):
+#     total=reduce(operator.mul,args)
+#     return total
+# print(multiply_all(2,3,4))
+
+
+# class Animal:
+#     def __init__(self,name,species):
+#         self.name=name
+#         self.species=species
+#     def describe(self):
+#         return f"The {self.species} is named {self.name}"
+    
+# Anima1=Animal("Dog","Gallus Gallus")
+# Anima2=Animal("Cat","Catus Domestica")
+# Anima3=Animal("House Fly","Domestica")
+
+# print(Anima1.describe())
+# print(Anima2.describe())
+# print(Anima3.describe())
+
+# from abc import ABC, abstractmethod
+# class BankAccount(ABC):
+#     def __init__(self,balance):
+#        self._balance=balance
+    
+#     @abstractmethod
+#     def calculate_interest(self):
+#         pass
+
+# class SavingsAccount(BankAccount):
+#     def __init__(self, balance):
+#         super().__init__(balance)      
+   
+#     def calculate_interest(self):
+#         percentage_interest=0.05
+#         return f"Interest={self._balance*percentage_interest}, Percentage_interest=5% "
+
+# class CurrentAccount(BankAccount):
+#     def __init__(self, balance):
+#         super().__init__(balance)
+
+#     def percentage_interest(self):
+#         return f"No interest given"
+
+#     def show_interest(self):
+#         return f"Interest={self.calculate_interest()}"
+
+# Badu=SavingsAccount(9032)
+# print(Badu.calculate_interest())
+
+
+import json
+class Student:
+    def __init__(self,name,age,grades):
+        self.name=name
+        self.age=age
+        self.grades=grades
+
+    def average_score(self):
+        return sum(self.grades)/len(self.grades)
+        
+class StudentManager:
+    def __init__(self,filename="students.json"):
+        self.filename=filename
+    
+    def add_student(self,student):
+        data=self.load_students()
+        data.append({
+            "name":student.name,
+            "age":student.age,
+            "grades":student.grades
+        })
+        with open(self.filename,"w") as file:
+            json.dump(data,file, indent=4)
+    
+    def load_students(self):
+       try:
+           with open("self.filename","r") as file:
+            json.load(file)
+
+       except (FileNotFoundError,json.JSONDecodeError):
+           return[]
+       
+    def show_all(self):
+        for s in self.load_students():
+            avg=sum(s["grades"])/len(s["grades"])
+            print(f"{s['name']} ({s['age']}) = Avg:{avg:.2f}")
+    
+manager=StudentManager()
+
+student1=Student("John",23,[83,23,67,87])
+student2=Student("Todd",22,[23,76,98])
+
+manager.add_student(student1)
+manager.add_student(student2)
+
+print(manager.show_all())   
+            
