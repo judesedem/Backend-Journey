@@ -1,0 +1,30 @@
+[
+    {
+        "name": "Jude",
+        "student_id": "ST001",
+        "grades": {
+            "Math": 78,
+            "English": 90,
+            "Science": 87,
+            "Social Studies": 79
+        }
+    },
+    {
+        "name": "Michelle O'hare",
+        "student_id": "ST096",
+        "grades": {
+            "Math": 78,
+            "English": 90,
+            "Science": 87
+        }
+    },
+    {
+        "name": "Gangsterlicious",
+        "student_id": "ST596",
+        "grades": {
+            "Math": 67,
+            "English": 98,
+            "Science": 97
+        }
+    }
+]
