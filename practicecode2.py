@@ -1585,50 +1585,106 @@ coordinates = [(1, 5), (2, 3), (4, 8), (0, 2)]
 
 
             
-import json
-class Product:
-    def __init__(self,name,price):
-        self._name=name
-        self._price=price
+# import json
+# class Product:
+#     def __init__(self,name,price):
+#         self._name=name
+#         self._price=price
 
-class Book(Product):
-    def price_discount(self):
-        discount_rate=0.1
-        return f"Discounted price={self._price-(self._price*discount_rate)}"
+# class Book(Product):
+#     def price_discount(self):
+#         discount_rate=0.1
+#         return f"Discounted price={self._price-(self._price*discount_rate)}"
 
-class Electronic(Product):
-    def price_discount(self):
-        if self._price>100:
-            discount_rate=0.2
-        else:
-            discount_rate=0.05
-        return f"Discounted price={self._price-(self._price*discount_rate)}"
+# class Electronic(Product):
+#     def price_discount(self):
+#         if self._price>100:
+#             discount_rate=0.2
+#         else:
+#             discount_rate=0.05
+#         return f"Discounted price={self._price-(self._price*discount_rate)}"
 
-#how do I convert them to objects what's the syntax for that 
-class ProductManager:
-    def __init__(self,filename="products.json"):
-        self.filename=filename
-    def read_products(self):
-        with open(self.filename,"r") as file:
-            data=json.load(file)
+# #how do I convert them to objects what's the syntax for that 
+# class ProductManager:
+#     def __init__(self,filename="products.json"):
+#         self.filename=filename
+#     def read_products(self):
+#         with open(self.filename,"r") as file:
+#             data=json.load(file)
         
-        products=[]
+#         products=[]
 
-        for item in data:
-            if item["type"]=="Book":
-                products.append(Book(item["name"], item["price"]))
-            elif item["type"] == "Electronic":
-                products.append(Electronic(item["name"], item["price"]))
+#         for item in data:
+#             if item["type"]=="Book":
+#                 products.append(Book(item["name"], item["price"]))
+#             elif item["type"] == "Electronic":
+#                 products.append(Electronic(item["name"], item["price"]))
         
-        return products
+#         return products
     
-manager=ProductManager()
-products=manager.read_products()
+# manager=ProductManager()
+# products=manager.read_products()
 
-for p in products:
-    print(p.price_discount())
-        
+# for p in products:
+#     print(p.price_discount())
+
+# text = "python"
+
+# print(text[0:3])
+# print(text[:4])
+# print(text[2:])
+# print(text[-3:])
+# print(text[:-1])
+
+# text = "abcdefg"
+
+# print(text[::2])     # skip
+# print(text[1::2])    # odd positions
+# print(text[::-1])    # reverse
+# print(text[:2])
+# print(text[3:5])
+# print(text[2:4])
+            
+from abc import ABC, abstractmethod
+class LibraryItem(ABC):
+    def __init__(self,title,author,item_id):
+        self.title=title
+        self.author=author
+        self.item_id=item_id
     
+    @abstractmethod
+    def get_details(self):
+        pass
+
+class Book(LibraryItem):
+    def get_details(self):
+        number_of_pages=234
+        return f"{self.title} by {self.author} contains {number_of_pages} pages"
+
+class Magazine(LibraryItem):
+    def get_details(self):
+        issue_number="A683B"
+        return f"{self.title} under {self.item_id} has issue number {issue_number}"
+
+class Library:
+    def __ignit__(self,LibraryIem):
+        self.LibraryItem=LibraryIem
+    
+    def add_item(item):
+        return item
+    def remove_item(item_id):
+        return
+    def find_item(item_id):
+        return
+    def list_items():
+        return
+    
+book1=LibraryItem("Romeo and Juliet"," Shakespeare")
+magazine1=Magazine("Bushes and Trees","A939",)
+
+       
+    
+                    
     
 
 
