@@ -1655,37 +1655,58 @@ class LibraryItem(ABC):
     @abstractmethod
     def get_details(self):
         pass
+class Solution:
+    def divideString(self, s: str, k: int, fill: str) -> List[str]:            
+        # while len(s)%k!=0:
+        #     s.append(fill)
+        #     break
+        # if len(s)%k==0:
+        #     for e in s:
+        # for i in range(len(s)):
+        #     while len(s)%k!=0:#validate the number of elements I'm dealing with
+        #         self.List.append(self.fill)
+        #         break
+        #     else:
+        # List=[]
+        # for i in range(0,len(s),k):  
+           
 
-class Book(LibraryItem):
-    def get_details(self):
-        number_of_pages=234
-        return f"{self.title} by {self.author} contains {number_of_pages} pages"
-
-class Magazine(LibraryItem):
-    def get_details(self):
-        issue_number="A683B"
-        return f"{self.title} under {self.item_id} has issue number {issue_number}"
-
-class Library:
-    def __ignit__(self,LibraryIem):
-        self.LibraryItem=LibraryIem
-    
-    def add_item(item):
-        return item
-    def remove_item(item_id):
-        return
-    def find_item(item_id):
-        return
-    def list_items():
-        return
-    
-book1=LibraryItem("Romeo and Juliet"," Shakespeare")
-magazine1=Magazine("Bushes and Trees","A939",)
-
-       
-    
+        #     if len(s)%k==0:
+        #         List.append(s[i:i+k])                    
+                
+        #     # elif len(s)%k!=0: 
+        #     #     List.append(s[i:i+k])               
+        #     #     fill=k-len(s)%k
+        #     #     while fill!=0:
+        #     #         List.append('x')
                     
-    
+        #             # break
+        #     chunk=s[i:i+k]
+        #     if len(chunk)<k:
+        #         fill=k-len(chunk)
+        #         chunk=chunk+'x'*fill
+    #         List.append(chunk)
+               
+        # return List
+        List = []
+        for i in range(0, len(s), k):
+            chunk = s[i:i+k]
+
+            if len(chunk) < k:
+                fill = k - len(chunk)
+                chunk += 'x' * fill
+
+            List.append(chunk)
+
+        return List
+
+
+                    
+                
+                
+            
+
+            
 
 
 
