@@ -1750,16 +1750,20 @@ coordinates = [(1, 5), (2, 3), (4, 8), (0, 2)]
 
 nums=[1,2,3,4]
 def minimumOperations():
-    for i in range(len(nums)):
-        count=0
-        if (i-1)%3==0 or (i+1)%3==0:
+    count=0
+    for num in nums:        
+        if (num-1)%3==0 or (num+1)%3==0:
             count+=1
     return count
-
-
-    
-
 print(minimumOperations())
    
                 
 
+# nums=[1,2,3,4]
+# def minimumOperations():
+#     count = 0
+#     for num in nums:
+#         if (num-1)%3==0 or (num+1)%3==0:
+#             count += 1
+#     return count
+# print(minimumOperations())
