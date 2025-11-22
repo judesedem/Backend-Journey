@@ -1645,19 +1645,21 @@ coordinates = [(1, 5), (2, 3), (4, 8), (0, 2)]
 # print(text[3:5])
 # print(text[2:4])
             
-from abc import ABC, abstractmethod
-class LibraryItem(ABC):
-    def __init__(self,title,author,item_id):
-        self.title=title
-        self.author=author
-        self.item_id=item_id
+# from abc import ABC, abstractmethod
+# class LibraryItem(ABC):
+#     def __init__(self,title,author,item_id):
+#         self.title=title
+#         self.author=author
+#         self.item_id=item_id
     
-    @abstractmethod
-    def get_details(self):
-        pass
-class Solution:
-    def divideString(self, s: str, k: int, fill: str) -> List[str]:            
-        # while len(s)%k!=0:
+#     @abstractmethod
+#     def get_details(self):
+#         pass
+
+# List=["abcdefgh"]
+# class Solution:
+#     def divideString(self, s: str, k: int, fill: str) -> List[str]:            
+#         # while len(s)%k!=0:
         #     s.append(fill)
         #     break
         # if len(s)%k==0:
@@ -1688,26 +1690,76 @@ class Solution:
     #         List.append(chunk)
                
         # return List
-        List = []
-        for i in range(0, len(s), k):
-            chunk = s[i:i+k]
 
-            if len(chunk) < k:
-                fill = k - len(chunk)
-                chunk += 'x' * fill
+    #     List = []
+    #     for i in range(0, len(s), k):
+    #         chunk = s[i:i+k]
 
-            List.append(chunk)
+    #         if len(chunk) < k:
+    #             fill = k - len(chunk)
+    #             chunk += 'x' * fill
 
-        return List
+    #         List.append(chunk)
+
+    #     return List
 
 
                     
                 
+    # class Solution:
+    #     def divideString(self, s: str, k: int, fill: str) -> List[str]:            
+            
+    #         List = []
+    #         for i in range(0, len(s), k):
+    #             chunk = s[i:i+k]
+
+    #             if len(chunk) < k:
+    #                 chunk += fill* (k-len(chunk)) 
+
+    #             List.append(chunk)
+
+    #         return List
                 
-            
 
-            
+# List=[0,1,1,0,1,0,1,0,0,1,1,0]
+# #so for it to be a valid 1 bit character it has to start with 
+# #0, but then if it were a 2 bit character it has to start with
+# #with 1 and ends with either 1 or 2
+# def second_to_last():
+#     for i in range(0,len(List),2):
+#         if List[i] or List[i+1]==0:
+#             i+=1
+#         elif  List[i-1]==0:
+#             return True
+#         elif len(List)==0:
+#             return False
+#         elif len(List)==1 and List[i]==0:
+#             return True
+#         else:
+#             return True
+# print(second_to_last())
+
+#  List[i-1]==0 and List[i-2]==0 or
+ # # valid_1bit=List[i:i+1]
+        # # if valid_1bit[i]==     
+        # if List[i-3]==1 and List[i-2]==1 or List[i-2]==0 and List[i-1]==0:
+        #     return True
+        # else:
+        #     return False
 
 
+nums=[1,2,3,4]
+def minimumOperations():
+    for i in range(len(nums)):
+        count=0
+        if (i-1)%3==0 or (i+1)%3==0:
+            count+=1
+    return count
 
+
+    
+
+print(minimumOperations())
+   
+                
 
